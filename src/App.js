@@ -28,14 +28,20 @@ const renderMovies = movies.map(movie =>{
 const addMovie = (event) =>{
   event.preventDefault();
 
+  //구조분해할당이라고 명한다
+  //movies에 있는 전체 데이터를 불러와, 신규의 데이터를 이어붙여서 값을 다시저장한는 역할
   setMovies([
-    ...movies,{
+    ...movies,{  //...의미는 array에 전체값을 불러오는의미라고 판단하면됨.
     title : movieTitle, year : movieYear
-  }])
+  }]);
 
   // movies.push({
   //   title : movieTitle, year : movieYear
   // })
+
+setMovieTitle('');
+setMovieYear('');
+
 }
 
   return (
