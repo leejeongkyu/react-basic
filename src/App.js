@@ -7,11 +7,7 @@ import MovieForm from './components/MovieForm';
 
 function App() {
   
-  const [movies, setMovies] =useState([
-        {title:'movie1', year:2001},
-        {title:'movie2', year:2002},
-        {title:'movie3', year:2003},
-    ]);
+  const [movies, setMovies] =useState([]);
  
 //   const movies = [
 //     {title:'movie1', year:2001},
@@ -19,11 +15,21 @@ function App() {
 //     {title:'movie3', year:2003},
 // ]
 
-const renderMovies = movies.map(movie =>{
+const removeMovie = (id) => {
+  setMovies(movies.filter(movie =>{
+    return movie.id !== id;
+  }))
+};
+
+const renderMovies = movies.length ? movies.map(movie =>{
   return (
-      <Movie movie={movie} key={movie.title}/>
+      <Movie 
+        movie={movie} 
+        removeMovie={removeMovie} 
+        key={movie.id}
+        />
   )
-})
+}) : '추가된 영화가 없습니다';
 
 const addMovie = (movie) =>{
 
